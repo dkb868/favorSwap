@@ -4,10 +4,6 @@ angular.module('app.controllers', [])
 
 })
       
-.controller('loginViewCtrl', function($scope) {
-
-})
-   
 .controller('favorListViewCtrl', function($scope) {
 
 })
