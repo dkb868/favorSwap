@@ -1,10 +1,14 @@
-<ion-view view-title="Login">
-  <ion-content>
-    <div class="padding">
-      <button class="button button-block button-assertive"
-              ng-click="ctrl.loginWithGoogle()">
-        Google
-      </button>
-    </div>
-  </ion-content>
+
+<ion-view style="" id="page6" title="FavorListView">
+<ion-content class="has-header" padding="true">
+<ion-content class="list card">
+	<ion class="item item-avatar">
+		<img ng-src="{{authData.facebook.profileImageURL}}" alt="">
+		<h2 id='displayName'>{{authData.facebook.displayName}}</h2>
+		<p>{{authData.facebook.username}}</p>
+		<p>Facebook</p>
+	</ion>
+</ion-content>
+
+</ion-content>
 </ion-view>
