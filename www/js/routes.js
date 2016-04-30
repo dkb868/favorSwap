@@ -65,6 +65,8 @@ angular.module('app.routes', ['ionicUIRouter'])
     controller: 'favorPostViewCtrl'
   })
 
+
+
 $urlRouterProvider.otherwise('/page1/page6')
 
   

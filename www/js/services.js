@@ -1,7 +1,14 @@
 angular.module('app.services', [])
 
-  .factory('Favor', [function(){
+function Auth(rootRef, $firebaseAuth) {
+  return $firebaseAuth(rootRef);
+}
+Auth.$inject = ['rootRef', '$firebaseAuth'];
 
+
+.factory('Auth', Auth);
+
+.factory('Favor', [function(){
     // create new object
     var favorFactory = {};
 
