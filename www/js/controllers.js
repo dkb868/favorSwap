@@ -10,11 +10,48 @@ angular.module('app.controllers', ['app.services'])
     // Favor.all()
 
     // set the favors (only incompleted favors)
-    vm.tasks = [
-      { title: "Collect coins"},
-      { title: "Eat shrooooms"},
-      {title: "get high enough"}
-    ];
+    vm.favors = [
+      {
+        'cost': '100',
+        'expiration': new Date(),
+        'owner': {
+          'name': "Patrick Bruin",
+          'image': "res/patrick.jpg"
+        },
+        'content': "Can someone drop in my math homework i'm soo lazy"
+
+      },
+      {
+        'cost': '100',
+        'expiration': new Date(),
+        'owner': {
+          'name': "Patrick Bruin",
+          'image': "res/patrick.jpg"
+        },
+        'content': "Can someone drop in my math homework i'm soo lazy"
+
+      },
+      {
+        'cost': '100',
+        'expiration': new Date(),
+        'owner': {
+          'name': "Patrick Bruin",
+          'image': "res/patrick.jpg"
+        },
+        'content': "Can someone drop in my math homework i'm soo lazy"
+
+      },
+      {
+        'cost': '100',
+        'expiration': new Date(),
+        'owner': {
+          'name': "Patrick Bruin",
+          'image': "res/patrick.jpg"
+        },
+        'content': "Can someone drop in my math homework i'm soo lazy"
+
+      }
+    ]
 
   })
 
