@@ -65,6 +65,13 @@ angular.module('app.routes', ['ionicUIRouter'])
     controller: 'favorPostViewCtrl'
   })
 
+    .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl as ctrl'
+  })
+
+
 $urlRouterProvider.otherwise('/page1/page6')
 
   
