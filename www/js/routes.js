@@ -49,7 +49,7 @@ angular.module('app.routes', ['ionicUIRouter'])
       'tab1': {
         templateUrl: 'templates/favorListView.html',
         controller: 'favorListViewCtrl',
-        controllerAs: 'Favor'
+        controllerAs: 'favors'
       }
     }
   })

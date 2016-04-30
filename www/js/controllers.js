@@ -9,6 +9,13 @@ angular.module('app.controllers', ['app.services'])
     var vm = this;
     // Favor.all()
 
+    vm.tasks = [
+      { title: 'Collect coins' },
+      { title: 'Eat mushrooms' },
+      { title: 'Get high enough to grab the flag' },
+      { title: 'Find the Princess' }
+    ];
+
     // set the favors (only incompleted favors)
     vm.favors = [
       {
@@ -51,7 +58,7 @@ angular.module('app.controllers', ['app.services'])
         'content': "Can someone drop in my math homework i'm soo lazy"
 
       }
-    ]
+    ];
 
   })
 
