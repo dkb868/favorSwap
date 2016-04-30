@@ -1,9 +1,9 @@
 <ion-view style="" id="page6" title="FavorListView">
     <ion-content class="has-header" padding="true">
         <ion-list style="">
-            <ion-item style="">Buy bread</ion-item>
-            <ion-item style="">Drop in my homework</ion-item>
-            <ion-item style="">Bring me some bacon</ion-item>
+            <ion-item style="" ng-repeat="task in favors.tasks">
+              {{task.title}}
+            </ion-item>
         </ion-list>
     </ion-content>
 </ion-view>
