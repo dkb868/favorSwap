@@ -1,7 +1,7 @@
 {
-  "name": "favorswap",
+  "name": "test1",
   "version": "1.1.1",
-  "description": "favorSwap: An Ionic project",
+  "description": "test1: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

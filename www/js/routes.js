@@ -43,12 +43,6 @@ angular.module('app.routes', ['ionicUIRouter'])
     abstract:true
   })
 
-  .state('loginView', {
-    url: '/page5',
-    templateUrl: 'templates/loginView.html',
-    controller: 'loginViewCtrl'
-  })
-
   .state('tabsController.favorListView', {
     url: '/page6',
     views: {
@@ -71,7 +65,7 @@ angular.module('app.routes', ['ionicUIRouter'])
     controller: 'favorPostViewCtrl'
   })
 
-$urlRouterProvider.otherwise('/page5')
+$urlRouterProvider.otherwise('/page1/page6')
 
   
 
