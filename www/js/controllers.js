@@ -8,7 +8,10 @@ angular.module('App.controllers', ['App.services'])
    .controller('viewBidsPageCtrl', function($scope, $state, $ionicPopup, $stateParams, Bid, Favor) {
 
     var vm = $scope;
-
+    var ref = new Firebase("https://favourswap.firebaseio.com/");
+    var authData = ref.getAuth();
+    vm.user = authData.uid == "f0883c0d-a445-4bb5-831d-1b8204f2c7fb" ? creator : worker;
+    console.log("User " + vm.user);
     var favorId = $stateParams.id;
 
     vm.bids = Bid.all();
@@ -44,7 +47,10 @@ angular.module('App.controllers', ['App.services'])
     // set user
     vm.creator = creator;
     vm.worker = worker;
-
+    var ref = new Firebase("https://favourswap.firebaseio.com/");
+    var authData = ref.getAuth();
+    vm.user = authData.uid == "f0883c0d-a445-4bb5-831d-1b8204f2c7fb" ? creator : worker;
+    console.log("User " + vm.user);
     vm.favors = Favor.all();
 
 
@@ -139,7 +145,10 @@ angular.module('App.controllers', ['App.services'])
 
   .controller('favorPostViewCtrl', function($scope, $ionicPopup, $state, Favor) {
     var vm = $scope;
-
+    var ref = new Firebase("https://favourswap.firebaseio.com/");
+    var authData = ref.getAuth();
+    vm.user = authData.uid == "f0883c0d-a445-4bb5-831d-1b8204f2c7fb" ? creator : worker;
+    console.log("User " + vm.user);
 
     vm.categories = [
       {

@@ -10,7 +10,7 @@
 
     <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors Requested</h3>
     <ion-list>
-            <ion-item href="#/page1/viewBidsPage" ng-repeat="favor in favors" ng-show="favor.status=='waiting' && favor.owner.id==creator">
+            <ion-item href="#/page1/viewBidsPage" ng-repeat="favor in favors" ng-show="favor.status=='waiting' && favor.owner.id==user">
                 <ion-avatar item-left href="#/page1/viewBidsPage">
                     <a class="item item-avatar" href="{{'#/viewBidsPage/' + favor.$id}}">
                           <img src="res/patrick.jpg">
@@ -30,7 +30,7 @@
 
     <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors In Progress</h3>
     <ion-list>
-      <ion-item ng-repeat="favor in favors" ng-click="showConfirm(favor)" ng-show="favor.status=='working' && favor.owner.id==creator ">
+      <ion-item ng-repeat="favor in favors" ng-click="showConfirm(favor)" ng-show="favor.status=='working' && favor.owner.id==user ">
         <ion-avatar item-left>
           <a class="item item-avatar">
             <img src="res/patrick.jpg">
@@ -46,7 +46,7 @@
 
       <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors To Complete</h3>
       <ion-list>
-        <ion-item ng-repeat="favor in favors"  ng-show="favor.status=='working' && favor.owner.id==worker ">
+        <ion-item ng-repeat="favor in favors"  ng-show="favor.status=='working' && favor.owner.id!=user ">
           <ion-avatar item-left>
             <a class="item item-avatar">
               <img src="res/patrick.jpg">
