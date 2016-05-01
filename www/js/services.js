@@ -1,4 +1,4 @@
-angular.module('app.services', [])
+angular.module('App.services', [])
 
 // function Auth(rootRef, $firebaseAuth) {
 //   return $firebaseAuth(rootRef);

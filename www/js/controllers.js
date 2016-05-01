@@ -1,7 +1,7 @@
 var creator = "-KGgFeRFhANsvUKW2m3a";
 var worker = "-KGgFpZCurLy24ZBSylS";
 
-angular.module('app.controllers', ['app.services'])
+angular.module('App.controllers', ['App.services'])
 
    .controller('viewBidsPageCtrl', function($scope, $state, $ionicPopup, $stateParams, Bid, Favor) {
 
@@ -80,7 +80,6 @@ angular.module('app.controllers', ['app.services'])
     // set user
     vm.creator = creator;
     vm.worker = worker;
-
 
 
     // When button is clicked, the popup will be shown...
@@ -235,8 +234,6 @@ angular.module('app.controllers', ['app.services'])
             }
          ]
       });
-
-     console.log("CAT" + cat.avecost);
 
       myPopup.then(function(res) {
        console.log(res);
