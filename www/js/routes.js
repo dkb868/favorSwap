@@ -50,6 +50,13 @@ angular.module('app.routes', [])
         controller: 'favorPostViewCtrl'
       }
     }
+  })
+    
+  .state('viewBidsPage', {
+      url: '/viewBidsPage',
+      templateUrl: 'templates/viewBids.html',
+      controller: 'viewBidsPageCtrl'
+  
   });
 
 $urlRouterProvider.otherwise('/page1/page6')
