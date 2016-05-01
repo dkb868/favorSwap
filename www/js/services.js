@@ -1,4 +1,4 @@
-angular.module('app.services', [])
+angular.module('App.services', [])
 
 // function Auth(rootRef, $firebaseAuth) {
 //   return $firebaseAuth(rootRef);
@@ -8,38 +8,48 @@ angular.module('app.services', [])
 
 // .factory('Auth', Auth);
 
-.factory('Favor', [function(){
+.factory('Favor', ['$firebaseArray', function($firebaseArray){
     // create new object
+    var fire_base = new Firebase("https://favourswap.firebaseio.com/");
     var favorFactory = {};
 
     // get all favors
-    favorFactory.all = function(){
+    favorFactory.all = function() {
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors");
       // firebase shit goes here
-    };
+      return $firebaseArray(favorsRef);
+  	};
 
+    // TODO future note @dmitri: choose a specific user and hardcode their id for presentation
     // get all favors created by one user
     favorFactory.allCreatedByUser = function(userId){
-      // firebase omg
-    };
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors");
+      // firebase shit goes here
+      return $firebaseArray(favorsRef);
+	};
 
     // get all favors being worked on by one user
-    favorFactory.allWorkedOnbyUser = function(userId){
-      // firebase omg
-    };
+    favorFactory.allWorkedOnByUser = function(userId){
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors");
+      // firebase shit goes here
+      return $firebaseArray(favorsRef);
+  	};
 
     // get one favor
     favorFactory.get = function(id){
-      // firebase shit goes here
-    };
+      return fire_base.child('Favors').child(id);
+  	};
 
     // create a favor
     favorFactory.create = function(favorData){
-      // firebase shit goes here
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors");
+      favorsRef.push().set(favorData);
     };
 
     // update a favor
-    favorFactory.update = function(id, favorData) {
-      // firebase shit
+    favorFactory.update = function(favorData, id) {
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors/" +id);
+      favorsRef.update(favorData);
     };
 
     // deletea favor
@@ -51,34 +61,47 @@ angular.module('app.services', [])
 
   }])
 
-  .factory('Bid', [function(){
+  .factory('Bid', ['$firebaseArray', function($firebaseArray){
 
     // craete object
     var bidFactory = {};
 
+    bidFactory.all = function(){
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids");
+      return $firebaseArray(bidsRef);
+
+    };
+
     // get all bids for one user
-    bidFactory.allForUser =function(userId){
-      // firebase shit goes here
+    bidFactory.allForUser = function(){
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids");
+      return $firebaseArray(bidsRef);
     };
 
     // get all bids for one favor
-    bidFactory.allForFavor = function(favorId){
-      // firebase magic
+    bidFactory.allForFavor = function(){
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids");
+      return $firebaseArray(bidsRef);
+
     };
 
     // create new bid on a favor
     bidFactory.create = function(bidData){
-      // firebase magic
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids");
+      bidsRef.push().set(bidData);
     };
 
     // update a bid
-    bidFactory.update = function(bidId, bidData){
-      // firebase spells
+    bidFactory.update = function(bidData, bidId){
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids/" + bidId);
+      bidsRef.update(bidData);
     };
     // delete a bid
     bidFactory.delete = function(bidId){
       //firebase black box
     };
+
+    return bidFactory;
 
 
 
@@ -90,9 +113,5 @@ angular.module('app.services', [])
     var userFactory = {};
 
     // idk
-
-  }])
-
-  .service('BlankService', [function(){
 
   }]);

@@ -1,0 +1,29 @@
+<ion-view style="" id="viewBidsPage" title="View Bids">
+
+    <ion-nav-bar>
+        <ion-nav-back-button class="button-clear">
+            <i class="ion-arrow-left-c"></i> Back
+        </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-content class="has-header" padding="true">
+
+
+        <ion-list>
+            <ion-item ng-repeat="bid in bids" ng-click="showConfirm(bid)" ng-show="bid.status=='waiting'">
+                <ion-avatar item-left>
+                  <a class="item item-avatar">
+                    <img src={{bid.owner.image}}>
+                    <p>{{bid.owner.name}}</p>
+                    <p>Fellow Karma: {{bid.owner.karma}}</p>
+                    <p>Bid value: ${{bid.value}}</p>
+                  </a>
+                </ion-avatar>
+            </ion-item>
+        </ion-list>
+
+
+
+    </ion-content>
+
+</ion-view>

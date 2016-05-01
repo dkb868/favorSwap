@@ -1,3 +1,63 @@
-<ion-view style="" id="page4" title="FavorManagementView">
-    <ion-content class="has-header" padding="true"></ion-content>
+<link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,700,500' rel='stylesheet' type='text/css'>
+
+
+<ion-view style="" id="page4" title="Manage Favors">
+
+  <ion-content class="has-header" padding="true">
+
+    <h1>                                        </h1>
+    <h1>                                        </h1>
+
+    <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors Requested</h3>
+    <ion-list>
+            <ion-item href="#/page1/viewBidsPage" ng-repeat="favor in favors" ng-show="favor.status=='waiting' && favor.owner.id==creator">
+                <ion-avatar item-left href="#/page1/viewBidsPage">
+                    <a class="item item-avatar" href="{{'#/viewBidsPage/' + favor.$id}}">
+                          <img src="res/patrick.jpg">
+            <!--		      <img src={{favor.owner.image}}>-->
+            		      <h2>{{favor.owner.name}}</h2>
+                          <p>{{favor.content}}</p>
+                          <p>{{favor.category}}</p>
+
+                      <i class="icon-right ion-cash balanced"></i> 4
+                      <i class="icon-right ion-heart assertive"></i> 10
+                    </a>
+                </ion-avatar>
+            </ion-item>
+        </ion-list>
+
+    <br>
+
+    <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors In Progress</h3>
+    <ion-list>
+      <ion-item ng-repeat="favor in favors" ng-click="showConfirm(favor)" ng-show="favor.status=='working' && favor.owner.id==creator ">
+        <ion-avatar item-left>
+          <a class="item item-avatar">
+            <img src="res/patrick.jpg">
+            		      <!-- <img src={{favor.owner.image}}> -->
+            		      <h2>{{favor.owner.name}}</h2>
+            <p>{{favor.content}}</p>
+            <p>{{favor.category}}</p>
+
+          </a>
+        </ion-avatar>
+      </ion-item>
+
+
+      <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors To Complete</h3>
+      <ion-list>
+        <ion-item ng-repeat="favor in favors"  ng-show="favor.status=='working' && favor.owner.id==worker ">
+          <ion-avatar item-left>
+            <a class="item item-avatar">
+              <img src="res/patrick.jpg">
+              <!-- <img src={{favor.owner.image}}> -->
+              <h2>{{favor.owner.name}}</h2>
+              <p>{{favor.content}}</p>
+              <p>{{favor.category}}</p>
+
+            </a>
+          </ion-avatar>
+        </ion-item>
+
+  </ion-content>
 </ion-view>

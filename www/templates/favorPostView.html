@@ -1,3 +1,50 @@
-<ion-view style="" id="page8" title="FavorPostView">
-    <ion-content class="has-header" padding="true"></ion-content>
+<ion-view style="" id="page8" title="Categories">
+    <ion-content class="has-header" padding="true">
+
+<!--    <div class="Categories">
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-edit"></i>
+    Schoolwork
+  </a>
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-pizza"></i>
+    Food Delivery
+  </a>
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-model-s"></i>
+    Transportation
+  </a>
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-more"></i>
+    Other
+  </a>
+
+</div> -->
+
+        <ion-list ng-repeat="cat in categories">
+
+            <ion-item nav-clear menu-close ng-click="toggleSubmenu(cat)">
+    <i class={{cat.icon}}></i>
+    {{cat.name}}
+    </ion-item>
+    <ion-item nav-clear menu-close ng-show="cat.submenu">
+
+                <ion-list>
+                    <ion-item nav-clear menu-close ng-repeat="subitem in cat.subitems" ng-click="showPopup(cat,subitem)">
+                      <h2>{{subitem.name}}</h2>
+                      Average Price: ${{subitem.avecost}}
+                    </ion-item>
+                </ion-list>
+            </ion-item>
+
+      </ion-list>
+
+
+
+    </ion-content>
 </ion-view>
+
