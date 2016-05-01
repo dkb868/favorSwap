@@ -1,4 +1,4 @@
-angular.module('app').factory('Utils', function($ionicLoading,$ionicPopup) {
+angular.module('App').factory('Utils', function($ionicLoading,$ionicPopup) {
 
 	var Utils = {
 

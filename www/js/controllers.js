@@ -1,4 +1,4 @@
-angular.module('app.controllers', ['app.services'])
+angular.module('App.controllers', ['App.services'])
 
    .controller('viewBidsPageCtrl', function($scope, $state, $ionicPopup, Bid) {
 
