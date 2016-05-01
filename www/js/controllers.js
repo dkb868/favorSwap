@@ -1,5 +1,7 @@
 var creator = "-KGgFeRFhANsvUKW2m3a";
-var worker = "-KGgFpZCurLy24ZBSylS";
+var worker = "-KGhDzxe_5w1PpjsIw-v";
+var creatorId = "f0883c0d-a445-4bb5-831d-1b8204f2c7fb";
+var workerId = "80a2fd55-9a01-4ce0-95a3-65c54403fb0c";
 
 angular.module('App.controllers', ['App.services'])
 
@@ -77,14 +79,10 @@ angular.module('App.controllers', ['App.services'])
     // set the favors (only incompleted favors)
     vm.favors = Favor.all();
 
-    var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com");
+    var ref = new Firebase("https://favourswap.firebaseio.com/");
     var authData = ref.getAuth();
-
-    console.log("OMG AUTH " + authData);
-
-    // set user
-    vm.creator = creator;
-    vm.worker = worker;
+    vm.user = authData.uid == "f0883c0d-a445-4bb5-831d-1b8204f2c7fb" ? creator : worker;
+    console.log("User " + vm.user);
 
 
     // When button is clicked, the popup will be shown...
