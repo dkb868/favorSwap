@@ -4,10 +4,17 @@ angular.module('app.controllers', ['app.services'])
 
   })
 
-  .controller('favorListViewCtrl', function(Favor) {
+  .controller('favorListViewCtrl', function($scope) {
     // get view model ref
-    var vm = this;
+    var vm = $scope;
     // Favor.all()
+
+    vm.tasks = [
+      { title: 'Collect coins' },
+      { title: 'Eat mushrooms' },
+      { title: 'Get high enough to grab the flag' },
+      { title: 'Find the Princess' }
+    ];
 
     // set the favors (only incompleted favors)
     vm.favors = [
@@ -51,7 +58,7 @@ angular.module('app.controllers', ['app.services'])
         'content': "Can someone drop in my math homework i'm soo lazy"
 
       }
-    ]
+    ];
 
   })
 
