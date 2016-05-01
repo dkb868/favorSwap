@@ -15,30 +15,24 @@ angular.module('app.services', [])
 
     // get all favors
     favorFactory.all = function() {
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors");
       // firebase shit goes here
-      return $firebaseArray(fire_base.child('Favors'));
+      return $firebaseArray(favorsRef);
   	};
 
+    // TODO future note @dmitri: choose a specific user and hardcode their id for presentation
     // get all favors created by one user
     favorFactory.allCreatedByUser = function(userId){
-    	favorIDs = fire_base.Users.child(userID).child(Favors_Active);
-    	var allFavors;
-    	for(var i = 0; i < favorIDs.length(); i++)
-    	{
-    		allFavors += fire_base.child('Favors').child(favorIDs[i]); //should be an array, care.
-    	}
-      return allFavors;
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors");
+      // firebase shit goes here
+      return $firebaseArray(favorsRef);
 	};
 
     // get all favors being worked on by one user
-    favorFactory.allWorkedOnbyUser = function(userId){
-      favorIDs = fire_base.Users.child(userID).child(Favors_Working);
-      var allFavors;
-      for(var i = 0; i < favorIDs.length(); i++)
-      {
-      	allFavors += fire_base.child('Favors').child(favorIDs[i]);
-      }
-      return allFavors;
+    favorFactory.allWorkedOnByUser = function(userId){
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors");
+      // firebase shit goes here
+      return $firebaseArray(favorsRef);
   	};
 
     // get one favor
@@ -65,19 +59,28 @@ angular.module('app.services', [])
 
   }])
 
-  .factory('Bid', [function(){
+  .factory('Bid', ['$firebaseArray', function($firebaseArray){
 
     // craete object
     var bidFactory = {};
 
+    bidFactory.all = function(){
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids");
+      return $firebaseArray(bidsRef);
+
+    };
+
     // get all bids for one user
-    bidFactory.allForUser =function(userId){
-      // firebase shit goes here
+    bidFactory.allForUser = function(){
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids");
+      return $firebaseArray(bidsRef);
     };
 
     // get all bids for one favor
-    bidFactory.allForFavor = function(favorId){
-      // firebase magic
+    bidFactory.allForFavor = function(){
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids");
+      return $firebaseArray(bidsRef);
+
     };
 
     // create new bid on a favor
@@ -93,6 +96,8 @@ angular.module('app.services', [])
     bidFactory.delete = function(bidId){
       //firebase black box
     };
+
+    return bidFactory;
 
 
 
