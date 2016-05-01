@@ -1,19 +1,18 @@
 angular.module('app.services', [])
 
-.factory('Favor', Favor)
-.factory('Bid', Bid)
-.factory('User', User);
+// function Auth(rootRef, $firebaseAuth) {
+//   return $firebaseAuth(rootRef);
+// }
+// Auth.$inject = ['rootRef', '$firebaseAuth'];
 
-Favor.$inject['$firebaseArray', 'FirebaseUrl'];
-Bid.$inject['FirebaseUrl'];
-User.$inject['FirebaseUrl'];
 
-function Favor(FirebaseUrl)
-{
-	var favorFactory = new Firebase("https://favourswap.firebaseio.com/");
+// .factory('Auth', Auth);
+
+.factory('Favor', [function(){
+    // create new object
+    var favorFactory = new Firebase("https://favourswap.firebaseio.com/");
+
     // get all favors
-
-
     favorFactory.all = function() {
       // firebase shit goes here
       return favorFactory.Favors;
@@ -49,70 +48,60 @@ function Favor(FirebaseUrl)
     // create a favor
     favorFactory.create = function(favorData){
       // firebase shit goes here
-      var newFavor = favorData;
-      favorFactory.Favors.push(newFavor);
-      var newFavorList = favorFactory.Users.child(favorData.Owner).child(favorData.State).push();
-      	  newFavorList.set("");
-  	};
+    };
 
     // update a favor
     favorFactory.update = function(id, favorData) {
       // firebase shit
-  	};
+    };
 
     // deletea favor
     favorFactory.delete = function(id){
       // firebase shit
-  	};
+    };
 
-  return favorFactory;
+    return favorFactory;
 
-}])
+  }])
 
-.factory('Bid', [function(){
+  .factory('Bid', [function(){
 
     // craete object
-    var bidFactory = new Firebase("https://favourswap.firebaseio.com/Bids");
+    var bidFactory = {};
 
     // get all bids for one user
     bidFactory.allForUser =function(userId){
       // firebase shit goes here
-  	};
+    };
 
     // get all bids for one favor
     bidFactory.allForFavor = function(favorId){
       // firebase magic
-  	};
+    };
 
     // create new bid on a favor
     bidFactory.create = function(bidData){
       // firebase magic
-  	};
+    };
 
     // update a bid
     bidFactory.update = function(bidId, bidData){
       // firebase spells
-  	};
+    };
     // delete a bid
     bidFactory.delete = function(bidId){
       //firebase black box
-  	};
-}])
+    };
 
-.factory('User', [function(){
+
+
+  }])
+
+  .factory('User', [function(){
+
     // create object
-	var usersAuth = new Firebase("https://favourswap.firebaseio.com/Users");
-	return $firebaseAuth(usersAuth);
+    var userFactory = {};
+
     // idk
 
-}])
-
-.service('BlankService', [function(){
-
-}]);
-
-
-  // function Auth(rootRef, $firebaseAuth) {
-//   return $firebaseAuth(rootRef);
-// }
-// Auth.$inject = ['rootRef', '$firebaseAuth'];
+  }]);
