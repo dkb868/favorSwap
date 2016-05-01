@@ -51,6 +51,11 @@ angular.module('app.routes', [])
       }
     }
   })
+    
+  .state('viewBidsPage', {
+      url: '/viewBidsPage',
+      templateUrl: 'templates/viewBids.html'
+  })
 
 $urlRouterProvider.otherwise('/page1/page6')
 
