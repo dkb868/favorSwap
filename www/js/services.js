@@ -42,12 +42,14 @@ angular.module('app.services', [])
 
     // create a favor
     favorFactory.create = function(favorData){
-      // firebase shit goes here
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors");
+      favorsRef.push().set(favorData);
     };
 
     // update a favor
-    favorFactory.update = function(id, favorData) {
-      // firebase shit
+    favorFactory.update = function(favorData, id) {
+      var favorsRef = new Firebase("https://favourswap.firebaseio.com/Favors/" +id);
+      favorsRef.update(favorData);
     };
 
     // deletea favor

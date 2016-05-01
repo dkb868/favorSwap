@@ -1,8 +1,13 @@
+var creator = "-KGgFeRFhANsvUKW2m3a";
+var worker = "-KGgFpZCurLy24ZBSylS";
+
 angular.module('app.controllers', ['app.services'])
 
-   .controller('viewBidsPageCtrl', function($scope, $state, $ionicPopup, Bid) {
+   .controller('viewBidsPageCtrl', function($scope, $state, $ionicPopup, $stateParams, Bid, Favor) {
 
     var vm = $scope;
+
+    var favorId = $stateParams.id;
 
     vm.bids = Bid.all();
     // When button is clicked, the popup will be shown...
@@ -17,6 +22,8 @@ angular.module('app.controllers', ['app.services'])
       confirmPopup.then(function(res) {
          if(res) {
             Bid.update({'status': "working"}, bid.$id);
+           Favor.update({'status': "working"}, favorId);
+
              $state.go("tabsController.favorManagementView");
 //            console.log('Sure!');
          } else {
@@ -31,6 +38,10 @@ angular.module('app.controllers', ['app.services'])
 
   .controller('favorManagementViewCtrl', function($scope, $ionicPopup, Favor) {
     var vm = $scope;
+    // set user
+    // set user
+    vm.creator = creator;
+    vm.worker = worker;
 
     vm.favors = Favor.all();
 
@@ -39,16 +50,17 @@ angular.module('app.controllers', ['app.services'])
 
             // When button is clicked, the popup will be shown...
    // When button is clicked, the popup will be shown...
-   $scope.showConfirm = function() {
+   $scope.showConfirm = function(fav) {
 
       var confirmPopup = $ionicPopup.confirm({
-         title: 'Confirm completion?',
+         title: 'Confirm completion',
          okText: 'Confirm'
       });
 
       confirmPopup.then(function(res) {
          if(res) {
             console.log('Sure!');
+            Favor.update({'status': 'done'}, fav.$id);
          } else {
             console.log('Not sure!');
          }
@@ -64,6 +76,10 @@ angular.module('app.controllers', ['app.services'])
 
     // set the favors (only incompleted favors)
     vm.favors = Favor.all();
+
+    // set user
+    vm.creator = creator;
+    vm.worker = worker;
 
 
 
@@ -119,7 +135,7 @@ angular.module('app.controllers', ['app.services'])
 
   })
 
-  .controller('favorPostViewCtrl', function($scope, $ionicPopup, $state) {
+  .controller('favorPostViewCtrl', function($scope, $ionicPopup, $state, Favor) {
     var vm = $scope;
 
 
@@ -132,18 +148,18 @@ angular.module('app.controllers', ['app.services'])
           {
             'name': 'Print Assignments',
             'purchasable': true,
-            'ave-value': 1
+            'avecost': 1
           },
           {
             'name': 'Homework Delivery',
             'purchasable': true,
-            'ave-value': 1
+            'avecost': 1
 
           },
           {
             'name': 'Take Notes',
             'purchasable': true,
-            'ave-value': 1
+            'avecost': 1
 
           }
         ]
@@ -156,18 +172,18 @@ angular.module('app.controllers', ['app.services'])
           {
             'name': 'Pizza',
             'purchasable': true,
-            'ave-value': 1
+            'avecost': 1
           },
           {
             'name': 'Milk',
             'purchasable': true,
-            'ave-value': 1
+            'avecost': 2
 
           },
           {
             'name': 'Candy',
             'purchasable': true,
-            'ave-value': 1
+            'avecost': 1
 
           }
         ]
@@ -187,25 +203,25 @@ angular.module('app.controllers', ['app.services'])
     ];
 
 
-    vm.submenu = false;
-    vm.toggleSubmenu = function() {
-      vm.submenu = !vm.submenu;
+
+    vm.toggleSubmenu = function(cat) {
+      cat.submenu = !cat.submenu;
     };
 
         // When button is clicked, the popup will be shown...
-   vm.showPopup = function(fav) {
+   vm.showPopup = function(cat,subitem) {
       vm.data = {};
 
       // Custom popup
       var myPopup = $ionicPopup.show({
          template: '<input type = "text" ng-model = "data.model">',
-         title: fav.content,
-         subTitle: "Enter cost of favor.",
+         title: subitem.name,
+         subTitle: "Add any details:",
              scope: vm,
 
          buttons: [
             { text: 'Cancel' }, {
-               text: '<b>Bid</b>',
+               text: '<b>Post Favor</b>',
                type: 'button-positive',
                   onTap: function(e) {
 
@@ -220,8 +236,20 @@ angular.module('app.controllers', ['app.services'])
          ]
       });
 
+     console.log("CAT" + cat.avecost);
+
       myPopup.then(function(res) {
        console.log(res);
+        var favor = {
+          'content': res,
+          'cost': subitem.avecost,
+          'status': 'waiting',
+          'category' : cat.name,
+          'owner' : {
+            'id': creator
+          }
+        };
+        Favor.create(favor);
        $state.go("tabsController.favorManagementView");
       });
    };

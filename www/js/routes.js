@@ -51,12 +51,12 @@ angular.module('app.routes', [])
       }
     }
   })
-    
+
   .state('viewBidsPage', {
-      url: '/viewBidsPage',
+      url: '/viewBidsPage/:id',
       templateUrl: 'templates/viewBids.html',
       controller: 'viewBidsPageCtrl'
-  
+
   });
 
 $urlRouterProvider.otherwise('/page1/page6')
