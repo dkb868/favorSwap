@@ -77,6 +77,11 @@ angular.module('App.controllers', ['App.services'])
     // set the favors (only incompleted favors)
     vm.favors = Favor.all();
 
+    var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com");
+    var authData = ref.getAuth();
+
+    console.log("OMG AUTH " + authData);
+
     // set user
     vm.creator = creator;
     vm.worker = worker;
