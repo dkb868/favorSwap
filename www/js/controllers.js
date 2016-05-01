@@ -66,7 +66,7 @@ angular.module('app.controllers', ['app.services'])
 
   })
 
-  .controller('favorPostViewCtrl', function(Favor) {
+  .controller('favorPostViewCtrl', function() {
     var vm = this;
 
     // function to save favor
