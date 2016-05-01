@@ -98,12 +98,12 @@ angular.module('app.controllers', ['app.services'])
 
   })
 
-  .controller('favorPostViewCtrl', function(Favor) {
+  .controller('favorPostViewCtrl', function() {
 
     // categories aka items
-  // pass in entire json object
+    // pass in entire json object
     // subITEMS
-      // COST
+    // COST
     // attribute to say that it's purchasable
 
 
