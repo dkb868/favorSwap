@@ -27,14 +27,14 @@
 
         <ion-list ng-repeat="cat in categories">
 
-            <ion-item nav-clear menu-close ng-click="toggleSubmenu()">
+            <ion-item nav-clear menu-close ng-click="toggleSubmenu(cat)">
     <i class={{cat.icon}}></i>
     {{cat.name}}
     </ion-item>
-    <ion-item nav-clear menu-close ng-show="submenu">
+    <ion-item nav-clear menu-close ng-show="cat.show">
   		
                 <ion-list>
-                    <ion-item nav-clear menu-close ng-click="showPopup(submenu)" ng-repeat="subitem in cat.subitems">{{subitem.name}}</ion-item>
+                    <ion-item nav-clear menu-close ng-repeat="subitem in cat.subitems" ng-click="showPopup(subitem)" >{{subitem.name}}</ion-item>
                 </ion-list>
             </ion-item>
 
