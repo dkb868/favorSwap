@@ -1,3 +1,52 @@
-<ion-view style="" id="page8" title="FavorPostView">
-    <ion-content class="has-header" padding="true"></ion-content>
+<ion-view style="" id="page8" title="Categories">
+    <ion-content class="has-header" padding="true">
+
+<!--    <div class="Categories">
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-edit"></i>
+    Schoolwork
+  </a>
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-pizza"></i>
+    Food Delivery
+  </a>
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-model-s"></i>
+    Transportation
+  </a>
+
+  <a href="#" class="item item-icon-left">
+    <i class="icon ion-more"></i>
+    Other
+  </a>
+
+</div> -->
+
+        <ion-list>
+            <ion-item nav-clear menu-close ng-click="toggleSubmenu()">Menu 1</ion-item>
+            <ion-item nav-clear menu-close ng-show="submenu">
+                <ion-list>
+                    <ion-item nav-clear menu-close ng-click="showPopup(submenu)">Submenu 1</ion-item>
+                    <ion-item nav-clear menu-close>Submenu 2</ion-item>
+                    <ion-item nav-clear menu-close>Submenu 3</ion-item>
+                </ion-list>
+            </ion-item>
+            <ion-item nav-clear menu-close ng-click="toggleSubmenu()">Menu 2</ion-item>
+            <ion-item nav-clear menu-close ng-show="submenu2">
+                <ion-list>
+                    <ion-item nav-clear menu-close>Submenu 1</ion-item>
+                    <ion-item nav-clear menu-close>Submenu 2</ion-item>
+                    <ion-item nav-clear menu-close>Submenu 3</ion-item>
+                </ion-list>
+            </ion-item>
+
+            <ion-item nav-clear menu-close>Menu 3</ion-item>
+            <ion-item nav-clear menu-close>Menu 4</ion-item>
+        </ion-list>
+
+    </ion-content>
 </ion-view>
+
