@@ -19,7 +19,6 @@
                           <p>{{favor.content}}</p>
                           <p>{{favor.category}}</p>
 
-                          
                       <i class="icon-right ion-cash balanced"></i> 4
                       <i class="icon-right ion-heart assertive"></i> 10
                     </a>
@@ -31,7 +30,7 @@
 
     <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors In Progress</h3>
     <ion-list>
-      <ion-item ng-repeat="favor in favors" ng-click="showConfirm(favor)" ng-show="favor.status=='working' && favor.owner.id==worker ">
+      <ion-item ng-repeat="favor in favors" ng-click="showConfirm(favor)" ng-show="favor.status=='working' && favor.owner.id==creator ">
         <ion-avatar item-left>
           <a class="item item-avatar">
             <img src="res/patrick.jpg">
@@ -45,9 +44,9 @@
       </ion-item>
 
 
-      <h3 align="center">Favors To Complete</h3>
+      <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors To Complete</h3>
       <ion-list>
-        <ion-item ng-repeat="favor in favors"  ng-show="favor.status=='working' && favor.owner.id!=worker ">
+        <ion-item ng-repeat="favor in favors"  ng-show="favor.status=='working' && favor.owner.id==worker ">
           <ion-avatar item-left>
             <a class="item item-avatar">
               <img src="res/patrick.jpg">
@@ -59,7 +58,6 @@
             </a>
           </ion-avatar>
         </ion-item>
-      </ion-list>
 
   </ion-content>
 </ion-view>
