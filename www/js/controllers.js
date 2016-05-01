@@ -4,7 +4,7 @@ angular.module('app.controllers', ['app.services'])
 
   })
 
-  .controller('favorListViewCtrl', function($scope) {
+  .controller('favorListViewCtrl', function($scope, $ionicPopup) {
     // get view model ref
     var vm = $scope;
     // Favor.all()
@@ -59,6 +59,42 @@ angular.module('app.controllers', ['app.services'])
 
       }
     ];
+    
+    
+    
+    // When button is clicked, the popup will be shown...
+   vm.showPopup = function(fav) {
+      vm.data = {}
+    
+      // Custom popup
+      var myPopup = $ionicPopup.show({
+         template: '<input type = "text" ng-model = "data.model">',
+         title: fav.content,
+         subTitle: "<div class=\"circular\"><img style=\"border-radius:100\" width=\"30%\" src=\"" + fav.owner.image + "\"/></div> "+fav.owner.name + "<br><br> <h5>How much do you want to bid?</h5>",
+         scope: vm,
+		
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '<b>Bid</b>',
+               type: 'button-positive',
+                  onTap: function(e) {
+                      
+                     if (!vm.data.model) {
+                        //don't allow the user to close unless he enters model...
+                           e.preventDefault();
+                     } else {
+                        return vm.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });    
+   };
+
 
   })
 
