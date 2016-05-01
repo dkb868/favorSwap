@@ -65,7 +65,7 @@ angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages',
   })
   
   .state('viewBidsPage', {
-    url: '/viewBidsPage',
+    url: '/viewBidsPage/:id',
     templateUrl: 'templates/viewBids.html',
     controller: 'viewBidsPageCtrl'
     
