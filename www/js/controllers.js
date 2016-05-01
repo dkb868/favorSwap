@@ -4,9 +4,9 @@ angular.module('app.controllers', ['app.services'])
 
   })
 
-  .controller('favorListViewCtrl', function(Favor) {
+  .controller('favorListViewCtrl', function($scope) {
     // get view model ref
-    var vm = this;
+    var vm = $scope;
     // Favor.all()
 
     vm.tasks = [
