@@ -7,14 +7,14 @@
 
     <h3 align="center" style="font-family: 'Roboto', sans-serif">Favors Requested</h3>
     <ion-list>
-            <ion-item href="#/page1/viewBidsPage">
+            <ion-item href="#/page1/viewBidsPage" ng-repeat="favor in requested">
                 <ion-avatar item-left href="#/page1/viewBidsPage">
                     <a class="item item-avatar" href="#/viewBidsPage">
                           <img src="res/patrick.jpg">
             <!--		      <img src={{favor.owner.image}}>-->
-            <!--		      <h2>{{favor.owner.name}}</h2>-->
-                          <p>Sleeping in. Need someone to turn in my 33B homework.</p>
-                          <p>Category</p>
+            		      <h2>{{favor.owner.name}}</h2>
+                          <p>{{favor.content}}</p>
+                          <p>{{favor.category}}</p>
                     </a>
                 </ion-avatar>
             </ion-item>
@@ -24,7 +24,7 @@
 
     <h3 align="center">Favors In Progress</h3>
     <ion-list>
-      <ion-item ng-repeat="favor in favors" ng-click="showConfirm(favor)">
+      <ion-item ng-repeat="favor in working" ng-click="showConfirm(favor)">
         <ion-avatar item-left>
           <a class="item item-avatar">
             <img src="res/patrick.jpg">

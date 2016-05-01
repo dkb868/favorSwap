@@ -1,40 +1,13 @@
 angular.module('app.controllers', ['app.services'])
 
-   .controller('viewBidsPageCtrl', function($scope, $state, $ionicPopup) {
-    
+   .controller('viewBidsPageCtrl', function($scope, $state, $ionicPopup, Bid) {
+
     var vm = $scope;
-    
-    vm.bids = [
-        {
-            'owner': {
-              'name': "Patrick Bruin",
-              'image': "res/patrick.jpg",
-                'karma': 20
-            },
-            'value': '2'
-        },
-        {
-            'owner': {
-              'name': "Patrick Bruin",
-              'image': "res/patrick.jpg",
-                'karma': 2
-            },
-            'value': '2'
-        },
-        {
-            'owner': {
-              'name': "Patrick Bruin",
-              'image': "res/patrick.jpg",
-                'karma': 10
-            },
-            'value': '2'
-        },
-        
-    ];
-    
+
+    vm.bids = Bid.all();
     // When button is clicked, the popup will be shown...
    vm.showConfirm = function(bid) {
-	
+
       var confirmPopup = $ionicPopup.confirm({
          title: 'Accept bid from ' + bid.owner.name +'?',
          template: '<div align="center">Karma: ' + bid.owner.karma + "<br><br>Bid value: $" + bid.value + "</div>",
@@ -49,62 +22,25 @@ angular.module('app.controllers', ['app.services'])
 //            console.log('Not sure!');
          }
       });
-		
+
    };
-    
+
 
   })
 
-  .controller('favorManagementViewCtrl', function($scope, $ionicPopup) {
+  .controller('favorManagementViewCtrl', function($scope, $ionicPopup, Favor) {
     var vm = $scope;
 
-    vm.favors = [
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
+    vm.favors = Favor.all();
+    vm.requested = Favor.allCreatedByUser("hardcodedID");
+    vm.working = Favor.allWorkedOnByUser("hardcodedID");
 
-      },
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
 
-      },
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      },
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      }
-    ];
 
             // When button is clicked, the popup will be shown...
    // When button is clicked, the popup will be shown...
    $scope.showConfirm = function() {
-  
+
       var confirmPopup = $ionicPopup.confirm({
          title: 'Confirm completion?',
          okText: 'Confirm',
@@ -117,71 +53,23 @@ angular.module('app.controllers', ['app.services'])
             console.log('Not sure!');
          }
       });
-    
+
    };
   })
 
-  .controller('favorListViewCtrl', function($scope, $ionicPopup) {
+  .controller('favorListViewCtrl', function($scope, $ionicPopup, Favor) {
     // get view model ref
     var vm = $scope;
     // Favor.all()
 
-    vm.tasks = [
-      { title: 'Collect coins' },
-      { title: 'Eat mushrooms' },
-      { title: 'Get high enough to grab the flag' },
-      { title: 'Find the Princess' }
-    ];
-
     // set the favors (only incompleted favors)
-    vm.favors = [
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      },
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      },
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      },
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      }
-    ];
+    vm.favors = Favor.all();
 
 
 
     // When button is clicked, the popup will be shown...
    vm.showPopup = function(fav) {
-      vm.data = {}
+      vm.data = {};
 
       // Custom popup
       var myPopup = $ionicPopup.show({
@@ -273,7 +161,7 @@ angular.module('app.controllers', ['app.services'])
             'name': 'Candy',
             'purchasable': true,
             'ave-value': 1
-            
+
           }
         ]
       },
@@ -295,11 +183,11 @@ angular.module('app.controllers', ['app.services'])
     vm.submenu = false;
     vm.toggleSubmenu = function() {
       vm.submenu = !vm.submenu;
-    }
+    };
 
         // When button is clicked, the popup will be shown...
    vm.showPopup = function(fav) {
-      vm.data = {}
+      vm.data = {};
 
       // Custom popup
       var myPopup = $ionicPopup.show({
