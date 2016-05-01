@@ -1,11 +1,14 @@
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,greek' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,700,500' rel='stylesheet' type='text/css'>
 
 
 <ion-view style="" id="page4" title="Manage Favors">
 
   <ion-content class="has-header" padding="true">
 
-    <h3 align="center" style="font-family: 'Roboto', sans-serif">Favors Requested</h3>
+    <h1>                                        </h1>
+    <h1>                                        </h1>
+
+    <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors Requested</h3>
     <ion-list>
             <ion-item href="#/page1/viewBidsPage" ng-repeat="favor in favors" ng-show="favor.status=='waiting' && favor.owner.id==creator">
                 <ion-avatar item-left href="#/page1/viewBidsPage">
@@ -15,6 +18,10 @@
             		      <h2>{{favor.owner.name}}</h2>
                           <p>{{favor.content}}</p>
                           <p>{{favor.category}}</p>
+
+                          
+                      <i class="icon-right ion-cash balanced"></i> 4
+                      <i class="icon-right ion-heart assertive"></i> 10
                     </a>
                 </ion-avatar>
             </ion-item>
@@ -22,7 +29,7 @@
 
     <br>
 
-    <h3 align="center">Favors In Progress</h3>
+    <h3 align="left" style="font-family: 'Roboto', sans-serif; font-weight: 300;">Favors In Progress</h3>
     <ion-list>
       <ion-item ng-repeat="favor in favors" ng-click="showConfirm(favor)" ng-show="favor.status=='working' && favor.owner.id==worker ">
         <ion-avatar item-left>

@@ -240,6 +240,7 @@ angular.module('app.controllers', ['app.services'])
 
       myPopup.then(function(res) {
        console.log(res);
+       if (res != null)
         var favor = {
           'content': res,
           'cost': subitem.avecost,
