@@ -1,0 +1,14 @@
+#banner{
+position:relative;
+  background: url('http://www.magic4walls.com/wp-content/uploads/2013/12/bokeh-lights-sunset-city.jpg') center;
+  padding:30px;
+}
+img{
+vertical-align:top;
+}
+#bannerText{
+position:absolute;
+  top:20px;
+  left:10px;
+  background:red;
+}
