@@ -10,11 +10,13 @@
         
         
         <ion-list>
-            <ion-item>
+            <ion-item ng-repeat="bid in bids" ng-click="showConfirm(bid)">
                 <ion-avatar item-left>
                   <a class="item item-avatar">
-                    <img src="res/patrick.jpg">
-                    <p>Sleeping in. Need someone to turn in my 33B homework.</p>
+                    <img src={{bid.owner.image}}>
+                    <p>{{bid.owner.name}}</p>
+                    <p>Fellow Karma: {{bid.owner.karma}}</p>
+                    <p>Bid value: ${{bid.value}}</p>
                   </a>
                 </ion-avatar>
             </ion-item>

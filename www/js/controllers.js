@@ -1,5 +1,60 @@
 angular.module('app.controllers', ['app.services'])
 
+   .controller('viewBidsPageCtrl', function($scope, $state, $ionicPopup) {
+    
+    var vm = $scope;
+    
+    vm.bids = [
+        {
+            'owner': {
+              'name': "Patrick Bruin",
+              'image': "res/patrick.jpg",
+                'karma': 20
+            },
+            'value': '2'
+        },
+        {
+            'owner': {
+              'name': "Patrick Bruin",
+              'image': "res/patrick.jpg",
+                'karma': 2
+            },
+            'value': '2'
+        },
+        {
+            'owner': {
+              'name': "Patrick Bruin",
+              'image': "res/patrick.jpg",
+                'karma': 10
+            },
+            'value': '2'
+        },
+        
+    ];
+    
+    // When button is clicked, the popup will be shown...
+   vm.showConfirm = function(bid) {
+	
+      var confirmPopup = $ionicPopup.confirm({
+         title: 'Accept bid from ' + bid.owner.name +'?',
+         template: '<div align="center">Karma: ' + bid.owner.karma + "<br><br>Bid value: $" + bid.value + "</div>",
+          okText: "Accept"
+      });
+
+      confirmPopup.then(function(res) {
+         if(res) {
+             $state.go("tabsController.favorManagementView");
+//            console.log('Sure!');
+         } else {
+//            console.log('Not sure!');
+         }
+      });
+		
+   };
+    
+
+  })
+
   .controller('favorManagementViewCtrl', function() {
 
   })

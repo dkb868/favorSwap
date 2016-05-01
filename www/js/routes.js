@@ -54,7 +54,8 @@ angular.module('app.routes', [])
     
   .state('viewBidsPage', {
       url: '/viewBidsPage',
-      templateUrl: 'templates/viewBids.html'
+      templateUrl: 'templates/viewBids.html',
+      controller: 'viewBidsPageCtrl'
   })
 
 $urlRouterProvider.otherwise('/page1/page6')
