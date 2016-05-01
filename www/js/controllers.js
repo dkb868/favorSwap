@@ -159,18 +159,18 @@ angular.module('App.controllers', ['App.services'])
           {
             'name': 'Print Assignments',
             'purchasable': true,
-            'avecost': 1
+            'avecost': 10
           },
           {
             'name': 'Homework Delivery',
             'purchasable': true,
-            'avecost': 1
+            'avecost': 5
 
           },
           {
             'name': 'Take Notes',
             'purchasable': true,
-            'avecost': 1
+            'avecost': 3
 
           }
         ]
@@ -183,18 +183,18 @@ angular.module('App.controllers', ['App.services'])
           {
             'name': 'Pizza',
             'purchasable': true,
-            'avecost': 1
+            'avecost': 10
           },
           {
             'name': 'Milk',
             'purchasable': true,
-            'avecost': 2
+            'avecost': 2.50
 
           },
           {
             'name': 'Candy',
             'purchasable': true,
-            'avecost': 1
+            'avecost': 3
 
           }
         ]
@@ -256,7 +256,8 @@ angular.module('App.controllers', ['App.services'])
           'status': 'waiting',
           'category' : cat.name,
           'owner' : {
-            'id': creator
+            'id': creator,
+            'image': "res/rahul.jpg"
           }
         };
         Favor.create(favor);
