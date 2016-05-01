@@ -1,3 +1,7 @@
+<head>
+<link rel="stylesheet" type="text/css" href="styles/styles.css">
+</head>
+
 <ion-view style="" id="page6" title="Favors Around You">
   <ion-content class="has-header" padding="true">
     <!--         <ion-list style="">
@@ -19,20 +23,24 @@
                   <p>Feeling hungry. Can anyone pick up some Rende for me?</p>
                 </a>
 
-            </div> -->
-    <ion-list>
-      <ion-item ng-repeat="favor in favors">
-        <ion-avatar item-left>
-          <a class="item item-avatar" href="#">
-            <img src="res/patrick.jpg">
-            <!--		      <img src={{favor.owner.image}}>-->
-            <!--		      <h2>{{favor.owner.name}}</h2>-->
-            <p>Sleeping in. Need someone to turn in my 33B homework.</p>
-          </a>
-        </ion-avatar>
-      </ion-item>
-    </ion-list>
 
+		</div> -->
+<ion-list>
+  <ion-item ng-repeat="favor in favors">
+    <ion-avatar  item-left>
+        
+        <div  class="item item-avatar"
+           ng-click="showPopup(favor)">
+<!--		      <img src="res/patrick.jpg">-->
+		      <img src={{favor.owner.image}}>
+		      <h2>{{favor.owner.name}}</h2>
+		      <p>{{favor.content}}</p>
+		      <p>category</p>
+        </div>
+        
+    </ion-avatar>
+  </ion-item>
+</ion-list>
 
   </ion-content>
 
