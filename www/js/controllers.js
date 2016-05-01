@@ -1,7 +1,4 @@
-var creator = "-KGgFeRFhANsvUKW2m3a";
-var worker = "-KGgFpZCurLy24ZBSylS";
-
-angular.module('app.controllers', ['app.services'])
+angular.module('App.controllers', ['App.services'])
 
    .controller('viewBidsPageCtrl', function($scope, $state, $ionicPopup, $stateParams, Bid, Favor) {
 
