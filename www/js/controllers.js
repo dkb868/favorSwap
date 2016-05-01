@@ -1,42 +1,10 @@
 angular.module('app.controllers', ['app.services'])
 
-  .controller('favorManagementViewCtrl', function($scope) {
-    var vm = $scope;
-    // favors  requested
-    // service.allCreatedByUser
-    vm.requestedFavors = [
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Joe Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can you defuse my bomb?"
-
-      }
-    ];
-
-
-
-    // favors  working on
-    // service.allWorkedOnByUser
-    vm.workingFavors = [
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Small Berg",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can you frack?"
-
-      }
-    ]
+  .controller('favorManagementViewCtrl', function() {
 
   })
 
-  .controller('favorListViewCtrl', function($scope) {
+  .controller('favorListViewCtrl', function($scope, $ionicPopup) {
     // get view model ref
     var vm = $scope;
     // Favor.all()
@@ -67,30 +35,66 @@ angular.module('app.controllers', ['app.services'])
           'name': "Patrick Bruin",
           'image': "res/patrick.jpg"
         },
-        'content': "omg i lost my database"
+        'content': "Can someone drop in my math homework i'm soo lazy"
 
       },
       {
         'cost': '100',
         'expiration': new Date(),
         'owner': {
-          'name': "Jesse Bruin",
+          'name': "Patrick Bruin",
           'image': "res/patrick.jpg"
         },
-        'content': "Can someone drop in my cs homework i'm soo lazy"
+        'content': "Can someone drop in my math homework i'm soo lazy"
 
       },
       {
         'cost': '100',
         'expiration': new Date(),
         'owner': {
-          'name': "Richard Swag",
+          'name': "Patrick Bruin",
           'image': "res/patrick.jpg"
         },
-        'content': "Can someone drop in my lang homework i'm soo lazy"
+        'content': "Can someone drop in my math homework i'm soo lazy"
 
       }
     ];
+    
+    
+    
+    // When button is clicked, the popup will be shown...
+   vm.showPopup = function(fav) {
+      vm.data = {}
+    
+      // Custom popup
+      var myPopup = $ionicPopup.show({
+         template: '<input type = "text" ng-model = "data.model">',
+         title: fav.content,
+         subTitle: "<div class=\"circular\"><img style=\"border-radius:100\" width=\"30%\" src=\"" + fav.owner.image + "\"/></div> "+fav.owner.name + "<br><br> <h5>How much do you want to bid?</h5>",
+         scope: vm,
+		
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '<b>Bid</b>',
+               type: 'button-positive',
+                  onTap: function(e) {
+                      
+                     if (!vm.data.model) {
+                        //don't allow the user to close unless he enters model...
+                           e.preventDefault();
+                     } else {
+                        return vm.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });    
+   };
+
 
   })
 
@@ -99,14 +103,6 @@ angular.module('app.controllers', ['app.services'])
   })
 
   .controller('favorPostViewCtrl', function() {
-
-    // categories aka items
-    // pass in entire json object
-    // subITEMS
-    // COST
-    // attribute to say that it's purchasable
-
-
     var vm = this;
 
     // function to save favor
