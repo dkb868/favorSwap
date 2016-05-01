@@ -1,6 +1,38 @@
 angular.module('app.controllers', ['app.services'])
 
-  .controller('favorManagementViewCtrl', function() {
+  .controller('favorManagementViewCtrl', function($scope) {
+    var vm = $scope;
+    // favors  requested
+    // service.allCreatedByUser
+    vm.requestedFavors = [
+      {
+        'cost': '100',
+        'expiration': new Date(),
+        'owner': {
+          'name': "Joe Bruin",
+          'image': "res/patrick.jpg"
+        },
+        'content': "Can you defuse my bomb?"
+
+      }
+    ];
+
+
+
+    // favors  working on
+    // service.allWorkedOnByUser
+    vm.workingFavors = [
+      {
+        'cost': '100',
+        'expiration': new Date(),
+        'owner': {
+          'name': "Small Berg",
+          'image': "res/patrick.jpg"
+        },
+        'content': "Can you frack?"
+
+      }
+    ]
 
   })
 
@@ -35,27 +67,27 @@ angular.module('app.controllers', ['app.services'])
           'name': "Patrick Bruin",
           'image': "res/patrick.jpg"
         },
-        'content': "Can someone drop in my math homework i'm soo lazy"
+        'content': "omg i lost my database"
 
       },
       {
         'cost': '100',
         'expiration': new Date(),
         'owner': {
-          'name': "Patrick Bruin",
+          'name': "Jesse Bruin",
           'image': "res/patrick.jpg"
         },
-        'content': "Can someone drop in my math homework i'm soo lazy"
+        'content': "Can someone drop in my cs homework i'm soo lazy"
 
       },
       {
         'cost': '100',
         'expiration': new Date(),
         'owner': {
-          'name': "Patrick Bruin",
+          'name': "Richard Swag",
           'image': "res/patrick.jpg"
         },
-        'content': "Can someone drop in my math homework i'm soo lazy"
+        'content': "Can someone drop in my lang homework i'm soo lazy"
 
       }
     ];
@@ -67,6 +99,14 @@ angular.module('app.controllers', ['app.services'])
   })
 
   .controller('favorPostViewCtrl', function(Favor) {
+
+    // categories aka items
+  // pass in entire json object
+    // subITEMS
+      // COST
+    // attribute to say that it's purchasable
+
+
     var vm = this;
 
     // function to save favor
