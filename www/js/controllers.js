@@ -292,12 +292,13 @@ angular.module('app.controllers', ['app.services'])
     ];
 
 
-    vm.submenu = false;
-    vm.toggleSubmenu = function() {
-      vm.submenu = !vm.submenu;
+    vm.toggleSubmenu = function(cat) {
+      // vm.submenu = !vm.submenu;
+      cat.show = !cat.show;
     }
 
         // When button is clicked, the popup will be shown...
+    vm.cancel = false;
    vm.showPopup = function(fav) {
       vm.data = {}
 
@@ -309,8 +310,11 @@ angular.module('app.controllers', ['app.services'])
              scope: vm,
 
          buttons: [
-            { text: 'Cancel' }, {
-               text: '<b>Bid</b>',
+            { text: 'CANCEL',
+
+            }, 
+            {
+               text: '<b>BID</b>',
                type: 'button-positive',
                   onTap: function(e) {
 
@@ -327,7 +331,8 @@ angular.module('app.controllers', ['app.services'])
 
       myPopup.then(function(res) {
        console.log(res);
-       $state.go("tabsController.favorManagementView");
+       if (res != null)
+          $state.go("tabsController.favorManagementView");
       });
    };
   });
