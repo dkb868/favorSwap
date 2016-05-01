@@ -16,6 +16,7 @@ angular.module('app.controllers', ['app.services'])
 
       confirmPopup.then(function(res) {
          if(res) {
+            Bid.update({'status': "working"}, bid.$id);
              $state.go("tabsController.favorManagementView");
 //            console.log('Sure!');
          } else {
@@ -32,8 +33,7 @@ angular.module('app.controllers', ['app.services'])
     var vm = $scope;
 
     vm.favors = Favor.all();
-    vm.requested = Favor.allCreatedByUser("hardcodedID");
-    vm.working = Favor.allWorkedOnByUser("hardcodedID");
+
 
 
 
@@ -43,7 +43,7 @@ angular.module('app.controllers', ['app.services'])
 
       var confirmPopup = $ionicPopup.confirm({
          title: 'Confirm completion?',
-         okText: 'Confirm',
+         okText: 'Confirm'
       });
 
       confirmPopup.then(function(res) {
@@ -57,7 +57,7 @@ angular.module('app.controllers', ['app.services'])
    };
   })
 
-  .controller('favorListViewCtrl', function($scope, $ionicPopup, Favor) {
+  .controller('favorListViewCtrl', function($scope, $ionicPopup, Favor, Bid) {
     // get view model ref
     var vm = $scope;
     // Favor.all()
@@ -95,13 +95,20 @@ angular.module('app.controllers', ['app.services'])
          ]
       });
 
+     var bids = Bid.all();
+
       myPopup.then(function(res) {
         var bid = {
-          favor: fav.cost, //should actualy be id
-          owner: fav.owner, // what
+          owner: {
+            'image': "res/patrick.jpg",
+            'karma': 23,
+            'name': 'Richard.min.js'
+          },
+          'status': "waiting",
           value: res
         };
          console.log(bid);
+        Bid.create(bid);
       });
    };
 

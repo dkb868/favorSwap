@@ -85,12 +85,14 @@ angular.module('app.services', [])
 
     // create new bid on a favor
     bidFactory.create = function(bidData){
-      // firebase magic
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids");
+      bidsRef.push().set(bidData);
     };
 
     // update a bid
-    bidFactory.update = function(bidId, bidData){
-      // firebase spells
+    bidFactory.update = function(bidData, bidId){
+      var bidsRef = new Firebase("https://favourswap.firebaseio.com/Bids/" + bidId);
+      bidsRef.update(bidData);
     };
     // delete a bid
     bidFactory.delete = function(bidId){
