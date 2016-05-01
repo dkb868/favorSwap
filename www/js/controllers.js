@@ -1,38 +1,6 @@
 angular.module('app.controllers', ['app.services'])
 
-  .controller('favorManagementViewCtrl', function($scope) {
-    var vm = $scope;
-    // favors  requested
-    // service.allCreatedByUser
-    vm.requestedFavors = [
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Joe Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can you defuse my bomb?"
-
-      }
-    ];
-
-
-
-    // favors  working on
-    // service.allWorkedOnByUser
-    vm.workingFavors = [
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Small Berg",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can you frack?"
-
-      }
-    ]
+  .controller('favorManagementViewCtrl', function() {
 
   })
 
@@ -67,27 +35,27 @@ angular.module('app.controllers', ['app.services'])
           'name': "Patrick Bruin",
           'image': "res/patrick.jpg"
         },
-        'content': "omg i lost my database"
+        'content': "Can someone drop in my math homework i'm soo lazy"
 
       },
       {
         'cost': '100',
         'expiration': new Date(),
         'owner': {
-          'name': "Jesse Bruin",
+          'name': "Patrick Bruin",
           'image': "res/patrick.jpg"
         },
-        'content': "Can someone drop in my cs homework i'm soo lazy"
+        'content': "Can someone drop in my math homework i'm soo lazy"
 
       },
       {
         'cost': '100',
         'expiration': new Date(),
         'owner': {
-          'name': "Richard Swag",
+          'name': "Patrick Bruin",
           'image': "res/patrick.jpg"
         },
-        'content': "Can someone drop in my lang homework i'm soo lazy"
+        'content': "Can someone drop in my math homework i'm soo lazy"
 
       }
     ];
@@ -98,15 +66,7 @@ angular.module('app.controllers', ['app.services'])
 
   })
 
-  .controller('favorPostViewCtrl', function() {
-
-    // categories aka items
-    // pass in entire json object
-    // subITEMS
-    // COST
-    // attribute to say that it's purchasable
-
-
+  .controller('favorPostViewCtrl', function(Favor) {
     var vm = this;
 
     // function to save favor

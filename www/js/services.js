@@ -8,7 +8,7 @@ angular.module('app.services', [])
 
 // .factory('Auth', Auth);
 
-.factory('Favor', [function(){
+.factory('Favor', ['$firebaseArray', function($firebaseArray){
     // create new object
     var fire_base = new Firebase("https://favourswap.firebaseio.com/");
     var favorFactory = {};
@@ -16,7 +16,7 @@ angular.module('app.services', [])
     // get all favors
     favorFactory.all = function() {
       // firebase shit goes here
-      return fire_base.Favors;
+      return $firebaseArray(fire_base.child('Favors'));
   	};
 
     // get all favors created by one user
@@ -25,7 +25,7 @@ angular.module('app.services', [])
     	var allFavors;
     	for(var i = 0; i < favorIDs.length(); i++)
     	{
-    		allFavors += fire_base.Favors.child(favorIDs[i]); //should be an array, care.
+    		allFavors += fire_base.child('Favors').child(favorIDs[i]); //should be an array, care.
     	}
       return allFavors;
 	};
@@ -36,14 +36,14 @@ angular.module('app.services', [])
       var allFavors;
       for(var i = 0; i < favorIDs.length(); i++)
       {
-      	allFavors += fire_base.Favors.child(favorIDs[i]);
+      	allFavors += fire_base.child('Favors').child(favorIDs[i]);
       }
       return allFavors;
   	};
 
     // get one favor
     favorFactory.get = function(id){
-      return fire_base.Favors.child(id);
+      return fire_base.child('Favors').child(id);
   	};
 
     // create a favor
