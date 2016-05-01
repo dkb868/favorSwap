@@ -28,16 +28,16 @@
 <ion-list>
   <ion-item ng-repeat="favor in favors">
     <ion-avatar  item-left>
-        
+
         <div  class="item item-avatar"
            ng-click="showPopup(favor)">
 <!--		      <img src="res/patrick.jpg">-->
 		      <img src={{favor.owner.image}}>
 		      <h2>{{favor.owner.name}}</h2>
 		      <p>{{favor.content}}</p>
-		      <p>category</p>
+		      <p>{{favor.category}}</p>
         </div>
-        
+
     </ion-avatar>
   </ion-item>
 </ion-list>

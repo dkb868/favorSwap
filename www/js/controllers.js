@@ -49,7 +49,7 @@ angular.module('app.controllers', ['app.services'])
             // When button is clicked, the popup will be shown...
    // When button is clicked, the popup will be shown...
    $scope.showConfirm = function() {
-  
+
       var confirmPopup = $ionicPopup.confirm({
          title: 'Confirm completion?',
          okText: 'Confirm',
@@ -62,11 +62,11 @@ angular.module('app.controllers', ['app.services'])
             console.log('Not sure!');
          }
       });
-    
+
    };
   })
 
-  .controller('favorListViewCtrl', function($scope, $ionicPopup) {
+  .controller('favorListViewCtrl', function($scope, $ionicPopup, Favor) {
     // get view model ref
     var vm = $scope;
     // Favor.all()
@@ -79,54 +79,13 @@ angular.module('app.controllers', ['app.services'])
     ];
 
     // set the favors (only incompleted favors)
-    vm.favors = [
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      },
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      },
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      },
-      {
-        'cost': '100',
-        'expiration': new Date(),
-        'owner': {
-          'name': "Patrick Bruin",
-          'image': "res/patrick.jpg"
-        },
-        'content': "Can someone drop in my math homework i'm soo lazy"
-
-      }
-    ];
+    vm.favors = Favor.all();
 
 
 
     // When button is clicked, the popup will be shown...
    vm.showPopup = function(fav) {
-      vm.data = {}
+      vm.data = {};
 
       // Custom popup
       var myPopup = $ionicPopup.show({
@@ -209,4 +168,69 @@ angular.module('app.controllers', ['app.services'])
        $state.go("tabsController.favorManagementView");
       });
    };
+  })
+
+
+  .controller('loginController', function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+    var ref = new Firebase(FURL);
+    var userkey = "";
+    $scope.signIn = function (user) {
+      console.log("Enviado");
+      if(angular.isDefined(user)){
+        Utils.show();
+        Auth.login(user)
+          .then(function(authData) {
+            //console.log("id del usuario:" + JSON.stringify(authData));
+
+            ref.child('profile').orderByChild("id").equalTo(authData.uid).on("child_added", function(snapshot) {
+              console.log(snapshot.key());
+              userkey = snapshot.key();
+              var obj = $firebaseObject(ref.child('profile').child(userkey));
+
+              obj.$loaded()
+                .then(function(data) {
+                  //console.log(data === obj); // true
+                  //console.log(obj.email);
+                  $localStorage.email = obj.email;
+                  $localStorage.userkey = userkey;
+
+                  Utils.hide();
+                  $state.go('home');
+                  console.log("Starter page","Home");
+
+                })
+                .catch(function(error) {
+                  console.error("Error:", error);
+                });
+            });
+
+          }, function(err) {
+            Utils.hide();
+            Utils.errMessage(err);
+          });
+      }
+    };
+
+  })
+
+  .controller('registerController', function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+
+    $scope.register = function(user) {
+      if(angular.isDefined(user)){
+        Utils.show();
+        Auth.register(user)
+          .then(function() {
+            Utils.hide();
+            console.log("Antes de loguear:" + JSON.stringify(user));
+            Utils.alertshow("Successfully","The User was Successfully Created.");
+            $location.path('/');
+          }, function(err) {
+            Utils.hide();
+            Utils.errMessage(err);
+          });
+      }
+    };
+
   });
+
+

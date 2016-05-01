@@ -50,9 +50,30 @@ angular.module('app.routes', [])
         controller: 'favorPostViewCtrl'
       }
     }
-  });
+  })
 
-$urlRouterProvider.otherwise('/page1/page6')
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html',
+      controller:'loginController'
+    })
+    .state('forgot', {
+      url: '/forgot',
+      templateUrl: 'views/forgot/forgot.html',
+      controller:'forgotController'
+    })
+    .state('register', {
+      url: '/register',
+      templateUrl: 'templates/register.html',
+      controller:'registerController'
+    })
+    .state('home', {
+      url: '/home',
+      templateUrl: 'views/home/home.html',
+      controller:'homeController'
+    })
+
+    $urlRouterProvider.otherwise('/page1/page6')
 
 
 
