@@ -34,13 +34,15 @@
                     <ion-item nav-clear menu-close>Submenu 3</ion-item>
                 </ion-list>
             </ion-item>
-            <ion-item nav-clear menu-close>Menu 2</ion-item>
-                        <ion-item nav-clear menu-close ng-show="submenu">
+            <ion-item nav-clear menu-close ng-click="toggleSubmenu()">Menu 2</ion-item>
+            <ion-item nav-clear menu-close ng-show="submenu2">
                 <ion-list>
                     <ion-item nav-clear menu-close>Submenu 1</ion-item>
                     <ion-item nav-clear menu-close>Submenu 2</ion-item>
                     <ion-item nav-clear menu-close>Submenu 3</ion-item>
                 </ion-list>
+            </ion-item>
+
             <ion-item nav-clear menu-close>Menu 3</ion-item>
             <ion-item nav-clear menu-close>Menu 4</ion-item>
         </ion-list>

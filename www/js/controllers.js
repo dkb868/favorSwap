@@ -107,18 +107,10 @@ angular.module('app.controllers', ['app.services'])
 
   })
 
-  .controller('favorPostViewCtrl', function() {
-    var vm = this;
-
-    // function to save favor
-    vm.saveFavor = function(){
-      // clear the 'error' messaeg
-      vm.message = '';
-
-      // use the create function in the favor service
-      /*Favor.create(vm.favorData)
-       .success(function(data){
-
-       })*/
+  .controller('favorPostViewCtrl', function($scope) {
+    var vm = $scope;
+    vm.submenu = false;
+    vm.toggleSubmenu = function() {
+      vm.submenu = !vm.submenu;
     }
   });
