@@ -22,8 +22,6 @@ angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages',
     templateUrl: 'views/home/home.html',
     controller:'homeController'
   })
-  
-
   .state('tabsController.favorManagementView', {
     url: '/page4',
     views: {
