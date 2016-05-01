@@ -171,6 +171,72 @@ angular.module('app.controllers', ['app.services'])
 
   .controller('favorPostViewCtrl', function($scope, $ionicPopup, $state) {
     var vm = $scope;
+
+
+    vm.categories = [
+      {
+        'name': 'Schoolwork',
+        'icon': 'icon ion-edit',
+        'purchasable': false,
+        'subitems' : [
+          {
+            'name': 'Print Assignments',
+            'purchasable': true,
+            'ave-value': 1
+          },
+          {
+            'name': 'Homework Delivery',
+            'purchasable': true,
+            'ave-value': 1
+
+          },
+          {
+            'name': 'Take Notes',
+            'purchasable': true,
+            'ave-value': 1
+
+          }
+        ]
+      },
+      {
+        'name': 'Food Delivery',
+        'icon': 'icon ion-pizza',
+        'purchasable': false,
+        'subitems' : [
+          {
+            'name': 'Pizza',
+            'purchasable': true,
+            'ave-value': 1
+          },
+          {
+            'name': 'Milk',
+            'purchasable': true,
+            'ave-value': 1
+
+          },
+          {
+            'name': 'Candy',
+            'purchasable': true,
+            'ave-value': 1
+            
+          }
+        ]
+      },
+      {
+        'name': 'Transportation',
+        'icon': 'icon ion-model-s',
+        'purchasable': true,
+        'subitems' : [        ]
+      },
+      {
+        'name': 'Other',
+        'icon': 'icon ion-more',
+        'purchasable': true,
+        'subitems' : [        ]
+      }
+    ];
+
+
     vm.submenu = false;
     vm.toggleSubmenu = function() {
       vm.submenu = !vm.submenu;
@@ -184,7 +250,7 @@ angular.module('app.controllers', ['app.services'])
       var myPopup = $ionicPopup.show({
          template: '<input type = "text" ng-model = "data.model">',
          title: fav.content,
-         subTitle: "lol",
+         subTitle: "Enter cost of favor.",
              scope: vm,
 
          buttons: [
